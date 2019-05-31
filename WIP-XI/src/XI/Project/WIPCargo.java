@@ -20,10 +20,11 @@ public class WIPCargo {
         
        
         int item = 0;
-        String menulist = "--- MENU ---\n1.Add\n2.Remove\n3.Show Cargo Description\n4.Show Menu List\n5.Config Limit of Cargo\n6.Exit\n------------";
-   
+        String menulist = "--- MENU ---\n1.Add\n2.Remove\n3.Show Cargo Description\n4.Show Menu List\n5.Config Cargo Limit\n6.Exit\n------------";
+        
+        
         System.out.println("Item in Cargo: " + item);
-        System.out.println("Limit of Cargo: " + limit);
+        System.out.println("Cargo Limit: " + limit);
         
         
         
@@ -66,8 +67,13 @@ public class WIPCargo {
                 System.out.println(menulist);
             } else if (menu.equals("5")) {
                 System.out.print("Enter new cargo limit: ");
-                int amount = sc.nextInt();
-                limit = amount;
+                int newcargo = sc.nextInt();
+                if (newcargo <= item) {
+                    limit = newcargo;
+                } else {
+                    System.out.println("Err: Unavailable to set new cargo limit. Entered cargo limit is greater than existing items in cargo.");
+                }
+                
             } else if (menu.equals("6")) {
                 System.out.print("Are you sure to exit? [Y/N]");
                 String confirm = sc.next();
