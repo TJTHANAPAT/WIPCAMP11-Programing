@@ -31,7 +31,7 @@ public class _1_Exercise {
         
         System.out.print("Enter Mommy's name : ");
         z = sc.next();
-               
+               1
         System.out.println("Total : " + (x+y));
         System.out.println(z);
     }
