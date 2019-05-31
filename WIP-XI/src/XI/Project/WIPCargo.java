@@ -15,9 +15,12 @@ public class WIPCargo {
         
         Scanner sc = new Scanner(System.in);
         
-        int limit = 10;
-        int item = 5;
-        String menulist = "--- MENU ---\n1.Add\n2.Remove\n3.Show Cargo Description\n4.Show Menu List\n5.Exit\n------------";
+        System.out.print("Enter cargo limit: ");
+        int limit = sc.nextInt();
+        
+       
+        int item = 0;
+        String menulist = "--- MENU ---\n1.Add\n2.Remove\n3.Show Cargo Description\n4.Show Menu List\n5.Config Limit of Cargo\n6.Exit\n------------";
    
         System.out.println("Item in Cargo: " + item);
         System.out.println("Limit of Cargo: " + limit);
@@ -25,44 +28,48 @@ public class WIPCargo {
         
         
         System.out.println(menulist);
+        System.out.println(" ");
         System.out.print("Enter menu: ");
-        int menu = sc.nextInt();
+        String menu = sc.next();
         //String menu = sc.nextLine();
         
         while( true ) {
-            if (menu == 1) {
+            if (menu.equals("1")) {
                 if (item < limit) {
-                    System.out.print("Enter Amount of item to add: ");
+                    System.out.print("Enter amount of item to add: ");
                     int amount = sc.nextInt();
                     int chkadd = item + amount;
                     if (chkadd <= limit) {
                         item += amount;
                         System.out.println("Item in Cargo: " + item);
                     } else {
-                        System.out.println("Unavailable to add item in cargo.");
+                        System.out.println("Err: Unavailable to remove item in cargo. Entered amount is greater than limit of cargo.");
                     }
                 } else {
                     System.out.println("Cargo is full.");
                 }
-            } else if (menu == '2') {
-                System.out.print("Enter Amount of item to remove: ");
+            } else if (menu.equals("2")) {
+                System.out.print("Enter amount of item to remove: ");
                 int amount = sc.nextInt();
                 if (amount <= item){
                     item -= amount;
                      System.out.println("Item in Cargo: " + item);
 
                 } else {
-                     System.out.println("Unavailable to remove item in cargo.");
+                     System.out.println("Err: Unavailable to remove item in cargo. Entered amount is greater than items in cargo.");
                 }
          
-            } else if (menu == 3) {
+            } else if (menu.equals("3")) {
                 System.out.println("Item in Cargo: " + item);
-                System.out.println("Limit of Cargo: " + limit);
-            } else if (menu == 4) {
+                System.out.println("Cargo Limit: " + limit);
+            } else if (menu.equals("4")) {
                 System.out.println(menulist);
-            }
-            else if (menu == 5) {
-                System.out.print("Are you sure to exit program? [Y/N]");
+            } else if (menu.equals("5")) {
+                System.out.print("Enter new cargo limit: ");
+                int amount = sc.nextInt();
+                limit = amount;
+            } else if (menu.equals("6")) {
+                System.out.print("Are you sure to exit? [Y/N]");
                 String confirm = sc.next();
                 if (confirm.equals("Y") || confirm.equals("y")) {
                     break;
@@ -74,32 +81,10 @@ public class WIPCargo {
             }
             System.out.println(" ");
             System.out.print("Enter menu: ");
-            menu = sc.nextInt();
+            menu = sc.next();
         }
              
         
-        
-        
-        
-        
-        
-        /**
-        int age = 18;
-        String name = "Wippo";
-        double money = 1100.11;
-        
-        boolean online = true;
-        String status;
-        
-        System.out.println("Hi! my name is " + name + " i'm " + age + " Y/O ");
-        
-        if(online == true){
-            status = "Online";
-        } else {
-            status = "Offline";
-        }
-        
-        System.out.println("I'm currently " + status + " and have " + money + "THB. left.");
-        * */
+
     }
 }
